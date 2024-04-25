@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт з іграми</title>
+    <style>
+        #gameFrame {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px; /* початкова висота вікна */
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            transition: height 0.5s; /* анімація розтягування */
+        }
+
+        #gameIframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        #expandButton {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #333;
+            border: none;
+            cursor: pointer;
+        }
+
+        #shrinkButton {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Вітаю на моєму сайті з іграми!</h1>
+    <p>Натисни на назву гри, щоб почати грати:</p>
+    <ul>
+        <li><a href="#subway" onclick="showGame('https://math-lessons.pro/lessons/18/', 'Subway surfers');">Subway surfers</a></li>
+        <li><a href="#yohoho" onclick="showGame('https://math-lessons.pro/lessons/5/', 'Yohoho');">Yohoho</a></li>
+        <li><a href="#1v1lol" onclick="showGame('https://math-lessons.pro/lessons/15/', '1v1LoL');">1v1LoL</a></li>
+        <li><a href="#cookie clicker" onclick="showGame('https://math-lessons.pro/lessons/19/', 'Cookie clicker');">Cookie clicker</a></li>
+        <li><a href="#getting over it" onclick="showGame('https://scratch.mit.edu/projects/389464290/embed', 'Getting Over It');">Getting Over It</a></li>
+        <li><a href="#soccer random" onclick="showGame('https://emulatoros.github.io/gfile/soccer-random/', 'Soccer Random');">Soccer Random</a></li>
+        <li><a href="#minecraft" onclick="showGame('https://ubg100.github.io/games/eaglercraft/index.html', 'minecraft');">Minecraft</a></li>
+        <li><a href="#SafeShare" onclick="showGame('https://safeshare.tv/', 'SafeShare');">SafeShare</a></li>
+        <li><a href="#Soundboard" onclick="showGame('https://www.myinstants.com/en/categories/sound%20effects/', 'Soundboard');">Soundboard</a></li>
+        
+    </ul>
+
+    <div id="gameFrame">
+        <iframe id="gameIframe" src=""></iframe>
+        <h2 id="gameTitle"></h2>
+        <button id="expandButton" onclick="expandGame()">Розширити на весь екран</button>
+        <button id="shrinkButton" onclick="shrinkGame()">Зменшити</button>
+    </div>
+
+    <script>
+        function showGame(url, title) {
+            document.getElementById('gameIframe').src = url;
+            document.getElementById('gameFrame').style.display = 'block';
+            document.getElementById('gameTitle').innerText = title;
+        }
+
+        function expandGame() {
+            document.getElementById('gameFrame').style.height = '100vh'; /* розтягнути на весь екран */
+            document.getElementById('expandButton').style.display = 'none'; /* сховати кнопку розширення */
+            document.getElementById('shrinkButton').style.display = 'block'; /* показати кнопку зменшення */
+        }
+
+        function shrinkGame() {
+            document.getElementById('gameFrame').style.height = '200px'; /* повернути попередній розмір */
+            document.getElementById('shrinkButton').style.display = 'none'; /* сховати кнопку зменшення */
+            document.getElementById('expandButton').style.display = 'block'; /* показати кнопку розширення */
+        }
+    </script>
+</body>
+</html>
